@@ -1,7 +1,8 @@
-package com.example.rxjavajsonplaceholderapi
+package com.example.rxjavajsonplaceholderapi.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.rxjavajsonplaceholderapi.R
 
 class MainActivity : AppCompatActivity() {
 
