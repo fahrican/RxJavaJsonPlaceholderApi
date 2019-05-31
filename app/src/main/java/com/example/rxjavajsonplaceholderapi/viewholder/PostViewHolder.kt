@@ -7,9 +7,9 @@ import kotlinx.android.synthetic.main.post_card.view.*
 
 class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    private var title: TextView
-    private var body: TextView
-    private var textId: TextView
+    var title: TextView
+    var body: TextView
+    var textId: TextView
 
     init {
         title = itemView.post_title
