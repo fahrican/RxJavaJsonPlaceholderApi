@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object JsonplaceholderRetrofitInstance {
 
     private val JSON_PLACEHOLDER_URL by lazy { "https://jsonplaceholder.typicode.com" }
-    var retrofit: Retrofit? = null
+    private var retrofit: Retrofit? = null
 
     val instance: Retrofit
         get() {
