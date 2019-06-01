@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object JsonplaceholderRetrofitInstance {
 
-    private lateinit var retrofit: Retrofit
+    var retrofit: Retrofit? = null
     private val JSON_PLACEHOLDER_URL by lazy { "https://jsonplaceholder.typicode.com" }
 
     val instance: Retrofit
@@ -14,10 +14,11 @@ object JsonplaceholderRetrofitInstance {
             if (retrofit == null) {
                 retrofit = Retrofit.Builder()
                     .baseUrl(JSON_PLACEHOLDER_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
                     .build()
             }
-            return retrofit
+            return retrofit!!
+
         }
 }

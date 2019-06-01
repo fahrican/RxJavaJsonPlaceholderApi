@@ -7,5 +7,5 @@ import retrofit2.http.GET
 interface PostsEndpoint {
 
     @GET("posts")
-    fun fetchPosts(): Observable<List<Post>>
+    fun fetchPosts(): Observable<ArrayList<Post>>
 }
