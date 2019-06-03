@@ -22,14 +22,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        main_swipe_refresh_layout.isRefreshing = true
         val retrofit = JsonplaceholderRetrofitInstance.instance
         jsonplaceholderApi = retrofit.create(PostsEndpoint::class.java)
         main_recycler_view.setHasFixedSize(true)
         main_recycler_view.layoutManager = LinearLayoutManager(this)
         compositeDisposable = CompositeDisposable()
-        fetchData()
     }
 
+    override fun onStart() {
+        super.onStart()
+        fetchData()
+        main_swipe_refresh_layout.setOnRefreshListener {
+            fetchData()
+        }
+    }
     private fun fetchData() {
         compositeDisposable.add(jsonplaceholderApi.fetchPosts()
             .subscribeOn(Schedulers.io())
@@ -41,5 +48,6 @@ class MainActivity : AppCompatActivity() {
     private fun displayData(posts: ArrayList<Post>?) {
         val adapter = PostAdapter(this, posts!!)
         main_recycler_view.adapter = adapter
+        main_swipe_refresh_layout.isRefreshing = false
     }
 }
